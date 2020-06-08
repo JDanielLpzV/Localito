@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../../../assets/mercado.svg"
+      width="32"
+      height="32"
+      class="d-inline-block align-top imgLogo"
+      alt=""
+    />
+    Localito
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#"
+          >Inicio <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['locales']">Locales</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['ofertas']">Ofertas</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['sobre-nosotros']"
+          >Sobre nosotros</a
+        >
+      </li>
+      <li class="nav-item" id="login" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['iniciar-sesion']"
+          >Iniciar sesión</a
+        >
+      </li>
+      <li class="nav-item" id="signup">
+        <button
+          type="button"
+          class="btn btn-dark"
+          [routerLink]="['registrarse']"
+        >
+          Registrarse
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
