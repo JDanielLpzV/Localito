@@ -1,3 +1,45 @@
-<p>
-  detail-stores works!
-</p>
+<section id="localito" class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+        <div class="card_book">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="{{ localito.url }}"
+              alt="{{ localito.Nombre }}"
+            />
+            <div class="card-body text-center">
+              <h4 class="card-title">
+                {{ localito.Nombre }}
+              </h4>
+              <p class="card-text">
+                <strong>{{ localito.Domicilio }}</strong>
+                <br />
+                {{ localito.Descripcion }}
+                <br />
+                <strong>
+                  {{ localito.Telefono }}
+                </strong>
+              </p>
+              <div class="container-precio-idioma">
+                <p class="badge badge-success">
+                  {{ localito.Tipo }}
+                </p>
+                <p class="badge badge-info">
+                  {{ localito.Horario }}
+                </p>
+              </div>
+              <a
+                href="{{ localito.Pagina }}"
+                class="btn btn-block btn-primary"
+                target="_blank"
+                >Sitio WEB</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

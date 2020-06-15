@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service'
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
+  providers: [AuthService],
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
-  constructor() { }
+  public user$: Observable<any> = this.authSvc.afAuth.user;
+  constructor(private authSvc: AuthService, private router: Router) { }
+  async onLogOut() {
+    try {
+      await this.authSvc.logout();
+      this.router.navigate(['/inicio']);
+    } catch (error) {
+      console.log(error);
+    }
 
-  ngOnInit() {
   }
-
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +20,16 @@ import { ProductRegisterComponent } from './components/forms/product-register/pr
 import { NewOfferComponent } from './components/forms/new-offer/new-offer.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { Page404Component } from './components/pages/page404/page404.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { SendEmailComponent } from './components/send-email/send-email.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ListStoresComponent } from './components/list-stores/list-stores.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ListOfertasComponent } from './components/list-ofertas/list-ofertas.component';
+import { ModalofertasComponent } from './components/modalofertas/modalofertas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,13 +48,22 @@ import { Page404Component } from './components/pages/page404/page404.component';
     ProductRegisterComponent,
     NewOfferComponent,
     ProfileComponent,
-    Page404Component
+    Page404Component,
+    SendEmailComponent,
+    ListStoresComponent,
+    ModalComponent,
+    ListOfertasComponent,
+    ModalofertasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

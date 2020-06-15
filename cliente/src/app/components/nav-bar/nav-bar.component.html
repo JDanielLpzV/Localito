@@ -38,20 +38,54 @@
           >Sobre nosotros</a
         >
       </li>
-      <li class="nav-item" id="login" routerLinkActive="active">
-        <a class="nav-link" href="#" [routerLink]="['iniciar-sesion']"
-          >Iniciar sesión</a
-        >
-      </li>
-      <li class="nav-item" id="signup">
-        <button
-          type="button"
-          class="btn btn-dark"
-          [routerLink]="['registrarse']"
-        >
-          Registrarse
-        </button>
-      </li>
+
+      <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
+        <li class="nav-item dropdown" *ngIf="user">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" [routerLink]="['admin/localitos']" href="#"
+              >Localitos</a
+            >
+            <a class="dropdown-item" [routerLink]="['admin/ofertas']" href="#"
+              >Ofertas</a
+            >
+          </div>
+        </li>
+        <li class="nav-item" id="logout" *ngIf="user">
+          <a class="nav-link" href="#" (click)="onLogOut()">Cerrar sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">{{ user?.email }}</a>
+        </li>
+      </ul>
     </ul>
+    <ng-template #login>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item" id="login" routerLinkActive="active">
+          <a class="nav-link" href="#" [routerLink]="['iniciar-sesion']"
+            >Iniciar sesión</a
+          >
+        </li>
+        <li class="nav-item" id="signup">
+          <button
+            type="button"
+            class="btn btn-dark"
+            [routerLink]="['registrarse']"
+          >
+            Registrarse
+          </button>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 </nav>

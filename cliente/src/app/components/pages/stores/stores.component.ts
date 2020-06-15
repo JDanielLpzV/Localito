@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataApiService } from '../../../services/data-api.service';
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoresComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private dataApi: DataApiService) { }
+  public localitos = [];
+  public localito = '';
   ngOnInit() {
+    this.dataApi.getAllLocalitos().subscribe(localitos => {
+      this.localitos = localitos;
+    });
   }
 
 }

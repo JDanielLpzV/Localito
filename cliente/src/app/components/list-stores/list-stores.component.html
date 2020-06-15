@@ -1,0 +1,67 @@
+<section class="row mt-5">
+  <div class="col">
+    <button
+      class="btn btn-primary float-right mb-3"
+      data-toggle="modal"
+      data-target="#modalLocalito"
+    >
+      Nuevo Localito
+    </button>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Domicilio</th>
+          <th scope="col">Horario</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let localito of localitos; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ localito.Nombre }}</td>
+          <td>{{ localito.Domicilio }}</td>
+          <td>{{ localito.Horario }}</td>
+          <td>{{ localito.Telefono }}</td>
+          <td>{{ localito.Tipo }}</td>
+          <td *ngIf="localito.Correo == userCorreo; else noOwner">
+            <button
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#modalLocalito"
+              (click)="onPreUpdateLocalito(localito)"
+            >
+              Actualizar
+            </button>
+          </td>
+          <td *ngIf="localito.Correo == userCorreo; else noOwner2">
+            <button
+              class="btn btn-danger"
+              (click)="onDeleteLocalito(localito.Id)"
+            >
+              Eliminar
+            </button>
+          </td>
+          <ng-template #noOwner>
+            <td>
+              <button class="btn btn-secondary" disabled="true">
+                Actualizar
+              </button>
+            </td>
+          </ng-template>
+          <ng-template #noOwner2>
+            <td>
+              <button class="btn btn-danger" disabled="true">
+                Eliminar
+              </button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<app-modal [userUid]="userUid"></app-modal>

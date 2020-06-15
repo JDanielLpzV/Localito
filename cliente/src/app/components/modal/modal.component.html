@@ -1,0 +1,148 @@
+<div
+  class="modal fade"
+  id="modalLocalito"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{
+            !this.dataApi.selectedLocalito.Id
+              ? "Nuevo Localito"
+              : "Actualizar Localito"
+          }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          name="formLocalito"
+          #formLocalito="ngForm"
+          (ngSubmit)="onSaveLocalito(formLocalito)"
+        >
+          <input
+            type="hidden"
+            name="Id"
+            [(ngModel)]="this.dataApi.selectedLocalito.Id"
+          />
+          <!-- <input type="hidden" name="userUid" [value]="userUid" /> -->
+          <input type="hidden" name="Correo" [value]="Correo" />
+          <div class="form-group">
+            <label for="Nombre" class="col-form-label">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="Nombre"
+              [(ngModel)]="this.dataApi.selectedLocalito.Nombre"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="Tipo">Tipo</label>
+              <select
+                name="Tipo"
+                class="form-control"
+                [(ngModel)]="this.dataApi.selectedLocalito.Tipo"
+              >
+                <option value="Supermercado">Supermercado</option>
+                <option value="Abarrotes">Abarrotes</option>
+                <option value="Carnicería">Carnicería</option>
+                <option value="Dulcería">Dulcería</option>
+                <option value="Postres">Postres</option>
+                <option value="Antojitos">Antojitos</option>
+                <option value="Cenaduría">Cenaduría</option>
+                <option value="Ferretería">Ferretería</option>
+                <option value="Fabrica">Fabrica</option>
+                <option value="Librería">Librería</option>
+                <option value="Heladería">Heladería</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="Domicilio">Domicilio:</label>
+              <input
+                type="text"
+                name="Domicilio"
+                class="form-control"
+                [(ngModel)]="this.dataApi.selectedLocalito.Domicilio"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="Horario">Horario</label>
+              <input
+                type="text"
+                name="Horario"
+                class="form-control"
+                placeholder="Horario"
+                [(ngModel)]="this.dataApi.selectedLocalito.Horario"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="Telefono">Telefono</label>
+              <input
+                type="text"
+                name="Telefono"
+                class="form-control"
+                placeholder="(10 Digitos)"
+                [(ngModel)]="this.dataApi.selectedLocalito.Telefono"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="Pagina">Link de pagina WEB</label>
+              <input
+                type="text"
+                name="Pagina"
+                class="form-control"
+                placeholder="Pagina"
+                [(ngModel)]="this.dataApi.selectedLocalito.Pagina"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="url" class="col-form-label">Url Logo:</label>
+            <textarea
+              class="form-control"
+              name="url"
+              [(ngModel)]="this.dataApi.selectedLocalito.url"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="Descripcion">Descripción</label>
+            <textarea
+              class="form-control"
+              name="Descripcion"
+              [(ngModel)]="this.dataApi.selectedLocalito.Descripcion"
+            ></textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              #btnClose
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Guardar Localito
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
